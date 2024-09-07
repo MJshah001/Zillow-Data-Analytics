@@ -77,13 +77,11 @@ The Airflow Directed Acyclic Graph (DAG), named `zillow_analytics_dag`, is centr
 ## 🔄 Lambda Functions
 Function roles:
 - `copyRawJsonFile-lambdaFunction`: Triggeres when new data arrives in the raw data bucket, copies data to an intermediate bucket.
-
 [code](https://github.com/MJshah001/Zillow-Data-Analytics/blob/main/copyRawJsonFile-lambdaFunction.py)
   
   ![lambdafunction1](https://github.com/MJshah001/Zillow-Data-Analytics/blob/main/Resources/copyrawjsonlambdafunction.png)
   
 - `transformation-convert-to-csv-lambdaFunction`: Transforms data to CSV format, filters required features and uploads csv it to the processed data bucket.
-
 [code](https://github.com/MJshah001/Zillow-Data-Analytics/blob/main/transformation-convert-to-csv-lambdaFunction.py)
   
   ![lambdafunction2](https://github.com/MJshah001/Zillow-Data-Analytics/blob/main/Resources/converttocsvlambdafunction.png)
@@ -110,9 +108,12 @@ CREATE TABLE zillowdata(
 
 ## 📈 Visualization with QuickSight
 
+![quicksight](https://github.com/MJshah001/Zillow-Data-Analytics/blob/main/Resources/zillow%20ss1%20.png)
+
+## Final Dashboard
 ![dashboard](https://github.com/MJshah001/Zillow-Data-Analytics/blob/main/Resources/Quicksight_Dashboard.png)
 
 ## 📝 Conclusion
-The Zillow Data Pipeline project exemplifies a high-throughput, scalable solution for real-time data handling, showcasing the effective use of cloud technologies in real estate analytics.
+The Zillow Data Pipeline project exemplifies a high-throughput, scalable solution for real-time data handling, showcasing the effective use of AWS cloud technologies in real estate analytics.
 
 
