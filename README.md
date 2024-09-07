@@ -21,7 +21,7 @@ The diagram illustrates the flow and interaction between different AWS services 
 ### Initial Setup
 - **Zillow Rapid API** : Get access to Zillow rapid API. [click here](https://rapidapi.com/s.mahmoud97/api/zillow56)
 - **AWS Account**: Set up an AWS account with necessary billing configurations. [click here](https://signin.aws.amazon.com/signup?request_type=register)
-- **IAM Configuration**: Includes a user group with `AdministratorAccess`. [click here]()
+- **IAM Configuration**: Includes a user group with `AdministratorAccess`. [click here](https://github.com/MJshah001/Zillow-Data-Analytics/blob/main/Resources/IAM%20config%20screenshots.docx)
 - **EC2 Instance**: Ubuntu Server 24.04 LTS, t2.medium.
 
 ### Security Configuration
@@ -43,14 +43,15 @@ airflow standalone
 ```
 
 ## 📋 Airflow DAG Configuration
-The `zillow_analytics_dag` ensures seamless automation across tasks. checkout python dag file [zillowanalytics.py]() :
+The `zillow_analytics_dag` ensures seamless automation across tasks. checkout python file for dag [zillowanalytics.py](https://github.com/MJshah001/Zillow-Data-Analytics/blob/main/zillowanalytics.py) :
 
 The Airflow Directed Acyclic Graph (DAG), named `zillow_analytics_dag`, is central to automating and managing the data pipeline's workflow in this project. Each task in the DAG is designed to handle specific aspects of the data processing sequence, ensuring a smooth and efficient pipeline execution. Below is a detailed breakdown of each task, the operators used, and the rationale behind their selection.
 
 ### DAG Details
 - **DAG ID**: `zillow_analytics_dag`
 - **Schedule Interval**: Configured to run daily to ensure up-to-date data processing.
-![zillow_dag]()
+
+![zillow_dag](https://github.com/MJshah001/Zillow-Data-Analytics/blob/main/Resources/dag_zillow.png)
 
 ### Task 1: Extract Data
 - **Operator Used**: `PythonOperator`
@@ -74,16 +75,22 @@ The Airflow Directed Acyclic Graph (DAG), named `zillow_analytics_dag`, is centr
 
 
 ## 🔄 Lambda Functions
-Detailed function roles:
-- `copyRawJsonFile-lambdaFunction`: Triggered when new data arrives in the raw data bucket, copies data to an intermediate bucket. [code]()
-  
-  ![lambdafunction1]()
-- `transformation-convert-to-csv-lambdaFunction`: Transforms data to CSV format, filters required features and uploads csv it to the processed data bucket. [code]()
-  
-  ![lambdafunction2]()
-`Note` : To use pandas we have added a `AWSSDKPandas-Python312` layer to this lambda function.
+Function roles:
+- `copyRawJsonFile-lambdaFunction`: Triggeres when new data arrives in the raw data bucket, copies data to an intermediate bucket.
 
-## 📊 Data Loading to Redshift
+[code](https://github.com/MJshah001/Zillow-Data-Analytics/blob/main/copyRawJsonFile-lambdaFunction.py)
+  
+  ![lambdafunction1](https://github.com/MJshah001/Zillow-Data-Analytics/blob/main/Resources/copyrawjsonlambdafunction.png)
+  
+- `transformation-convert-to-csv-lambdaFunction`: Transforms data to CSV format, filters required features and uploads csv it to the processed data bucket.
+
+[code](https://github.com/MJshah001/Zillow-Data-Analytics/blob/main/transformation-convert-to-csv-lambdaFunction.py)
+  
+  ![lambdafunction2](https://github.com/MJshah001/Zillow-Data-Analytics/blob/main/Resources/converttocsvlambdafunction.png)
+
+**`Note`** : To use pandas we have added a `AWSSDKPandas-Python312` layer to this lambda function.
+
+## 📊 Redshift Schema
 
 Redshift table creation:
 ```bash
@@ -99,9 +106,11 @@ CREATE TABLE zillowdata(
     zipcode INT
 );
 ```
+![redshift](https://github.com/MJshah001/Zillow-Data-Analytics/blob/main/Resources/redshitqueryinterface.png)
 
 ## 📈 Visualization with QuickSight
 
+![dashboard](https://github.com/MJshah001/Zillow-Data-Analytics/blob/main/Resources/Quicksight_Dashboard.png)
 
 ## 📝 Conclusion
 The Zillow Data Pipeline project exemplifies a high-throughput, scalable solution for real-time data handling, showcasing the effective use of cloud technologies in real estate analytics.
