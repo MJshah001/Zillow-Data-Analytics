@@ -1,7 +1,7 @@
 # Zillow Data Pipeline | AWS Project
 
 ## 🚀 Project Overview
-This project showcases an automated data pipeline that extracts property listings from Zillow using their official API, processes the data through AWS services, and visualizes the insights using AWS QuickSight. The entire workflow is orchestrated using Apache Airflow on AWS EC2, utilizing AWS Lambda for data processing and AWS Redshift for data storage.
+This project contains an automated data pipeline that extracts property listings from Zillow using a API, processes the data through AWS services, and visualizes the insights using AWS QuickSight. The entire workflow is orchestrated using Apache Airflow on AWS EC2, utilizing AWS Lambda for data processing and AWS Redshift for data storage.
 
 ## 📐 Architecture
 ![Zillow Data Pipeline Architecture](https://github.com/MJshah001/Zillow-Data-Analytics/blob/main/ZIllow%20Data%20Pipeline%20Project%20Architecture.jpg)
